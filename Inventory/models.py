@@ -14,3 +14,8 @@ class Product(models.Model):
     
     def __str__(self):
         return(f"{self.product_name} | {self.part_number}")
+    
+    @property
+
+    def stock_valuation(self):
+        return self.stock_balance*self.unit_cost

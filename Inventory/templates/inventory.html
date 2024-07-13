@@ -1,7 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class='container'>
-        <h1>Inventory</h1>
-    </div>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Part Number</th>
+            <th scope="col">Stock Balance</th>
+            <th scope="col">Unit Cost</th>
+            <th scope="col">Stock Valuation</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if inventory %}
+            {% for stock in inventory %}
+               <tr> 
+                    <td>{{ stock.id }}</td>
+                    <td>{{ stock.product_name }}</td>
+                    <td>{{ stock.part_number }}</td>
+                    <td>{{ stock.stock_balance }}</td>
+                    <td>{{ stock.unit_cost }}</td>
+                    <td>{{ stock.stock_valuation }}</td>
+                    {% if stock.product_image %}
+                        <td>
+                            <img src="{{ stock.product_image.url }}" alt="{{ stock.product_name}} image">
+                        </td>
+                    {% else %}
+                        <td> image N/A </td>
+                    {% endif %}
+                    
+               </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+    {% comment %} <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
 {% endblock %}
