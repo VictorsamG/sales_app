@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <style>
+        /* Alternatively, you can add CSS directly in the head section */
+        .product-image {
+        width: auto;
+        height: auto;
+        }
+    </style>
+</head>
+<div class="card" style="width: 18rem;">
+    <img src="{{ item.product_image.url }}" class="card-img" alt={{ item.product_name}}>
+    <div class="card-body">
+      <h5 class="card-title">{{item.product_name}}</h5>
+      <p class="card-text">{{item.part_number}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Stock balance: {{item.stock_balance}}</li>
+      <li class="list-group-item">Unit Cost: Ksh{{item.unit_cost}}</li>
+      <li class="list-group-item">Vehicle Make: {{item.vehicle_make}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Edit</a>
+      <a href="#" class="card-link">Delete</a>
+    </div>
+</div>
+{% endblock content %}
