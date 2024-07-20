@@ -13,7 +13,7 @@ class Product(models.Model):
     product_image = models.ImageField(upload_to='static/images/',null=True,blank=True)
     
     def __str__(self):
-        return(f"{self.product_name} | {self.part_number}")
+        return(f"{self.product_name} | {self.part_number} | {self.vehicle_model}")
     
     @property
 
